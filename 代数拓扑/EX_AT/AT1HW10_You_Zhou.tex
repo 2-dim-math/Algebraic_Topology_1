@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[all]{xy}
+\newtheorem*{lem}{Lemma}
+
+\title{Solution for Exercise sheet 10}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+\paragraph{Exercise 10.1}
+This follows from taking $A$ as a point in $X$ and $(Y,B)=(X,A)$ in the following lemma.
+\begin{lem}
+Let $(X,A)$ be a CW pair and let $(Y, B)$ be any pair with $B\neq\emptyset$. For
+each $n$ such that $X \setminus A$ has cells of dimension $n$, assume that $\pi_n(Y, B,y_0) = 0$ for
+all $y_0 \in B$ . Then every map $f \colon (X,A)\rightarrow(Y, B)$ is homotopic rel $A$ to a map $X\rightarrow B$ .
+\end{lem}
+\begin{proof}
+  Denote by $X^n$ the $n$-skeleton of the pair $(X,A).$ We prove by induction. First, $f|_{X^0}$ maps $A$ into $B,$ so nothing needs to be done.
+
+  Now suppose that $k\geq1$ and that $f$ has already been homotoped rel $A$ to another map $\bar{f}\colon(X,A)\rightarrow (Y,B)$ such that $\bar{f}|_{X^{k-1}}$ maps $X^{k-1}$ into $B.$ Let $\Phi$ be the characteristic map of a cell $e^k$ of $X\setminus A.$ The condition $\pi_k(Y, B,y_0) = 0$ implies that $\bar{f}\circ\Phi\colon(D^k,\partial D^k)\rightarrow(Y,B)$ can be homotoped rel $\partial D^k$ to some map $D^k\rightarrow B.$ Thus $\bar{f}|_{e^k}\colon(e^k,\Phi(\partial D^k))\rightarrow (Y,B)$ can be homotoped rel $\Phi(\partial D^k)$ to some map $e^k\rightarrow B.$ The condition ``rel $\Phi(\partial D^k)$'' allows us to extend this homotopy to a homotopy from $\bar{f}\colon(X^{k-1}\cup e^k,X^{k-1})\rightarrow (Y,B)$ to some $X^{k-1}\cup e^{k}\rightarrow B$ relative to $X^{k-1}$. This process can be carried out simultaneous on all $k$-cells of $X\setminus A.$ Thus we successfully homotoped $\bar{f}|_{X^k}$ rel $A$ to a map $X^k\rightarrow B.$ By the homotopy extension property, this homotopy can be extend to one defined on all of $X.$
+
+  Now if $(X,A)$ is finite-dimensional, using the induction steps finitely many times then shows that $f$ is homotopic rel $A$ to some map $X\rightarrow B.$ In general we can do the homotopy constructed in the $k$-th induction step during the $t$-interval $[1-1/2^{k-1},1-1/2^k]$ to combine all the homotopies constructed together to a new homotopy $f_t$. Since every point in $X$ lies in a finite-dimensional cell, by our construction $f_1(x)$ is well-definied for all $x\in X$ and $f_1(x)\in B.$
+\end{proof}
+
+\paragraph{Exercise 10.2}We prove $(iv)\Rightarrow(iii)\Rightarrow(ii)\Rightarrow(i)\Rightarrow(iv).$
+\subparagraph{$(iv)\Rightarrow(iii)$}Since $[K,f]$ is bijective, we get some $[\lambda]\in[K,X]$ such that $[f\circ\lambda]=[\beta]\in[K,Y].$ So $[\beta|_L]=[f\circ(\lambda|_L)]=[f\circ\alpha].$ Since $[L,f]$ is bijective by $(iv),$ we get that $[\lambda|_L]=[\alpha].$ By the homotopy extension property, $[\lambda]=[\lambda']\in[K,X]$ for some $\lambda'$ such that $\lambda'|_L=\alpha$ and $[f\circ\lambda']=[\beta]\in[K,Y].$
+
+\subparagraph{$(iii)\Rightarrow(ii)$}Just take $(K,L)=(D^n,\partial D^n).$
+
+\subparagraph{$(ii)\Rightarrow(i)$}It suffices to prove that $\pi_n(f)=0.$ Every element in $\pi_n(f)$ is represented by $(\alpha,\beta)$ satisfying the commutative diagram
+\[\xymatrix{
+\partial D^n\ar[r]^{\alpha}\ar@{^(-_>}[d] & X\ar[d]^{f}\\
+D^n\ar[r]^{\beta} & Y
+}.\]
+By $(ii)$ there is some $\lambda\colon D^n\rightarrow X$ such that $\lambda|_{\partial D^n}=\alpha$ and $f\circ\lambda$ is homotopic relative to $\partial D^n$ to $\beta.$ So $(\alpha,\beta)$ and $(\lambda|_{\partial D^{n}},f\circ\lambda)$ represent the same element in $\pi_n(f).$ But $D^n$ is contractible, so $\lambda$ is always null-homotopic. So $(\lambda|_{\partial D^{n}},f\circ\lambda)$ always represents the zero element in $\pi_n(f).$ This shows that $\pi_n(f)=0.$
+
+\subparagraph{$(i)\Rightarrow(iv)$}Surjectivity: Let $h\colon K\rightarrow Y$ and $M_f$ be the mapping cylinder of $f.$ Since $M_f$ is a deformation retraction of $Y$ and $f$ is weak homotopy equivalence, we have $\pi_n(M_f,X,x_0)=0$ for all $x_0\in X$ and $n\geq1.$ Let $i\colon X\hookrightarrow M_f,j\colon Y\hookrightarrow M_f$ and $p\colon M_f\rightarrow Y$ be natural inclusions or projections. The lemma above shows that (take $(X,A)=(K,\emptyset)$ and $(Y,B)=(M_f,X)$) there is a map $g\colon K\rightarrow X$ such that $i\circ g$ is homotopic with $j\circ h.$ So in $[K,Y]$ we have
+\[[f\circ g]=[p\circ i\circ g]=[p\circ j\circ h]=[h].\]
+This proves the surjectivity.
+
+Injectivity: Suppose that $g_1,g_2\colon K\rightarrow X$ such that $[f\circ g_1]=[f\circ g_2].$ Then $[p\circ i\circ g_1]=[p\circ i\circ g_2].$ Since $p$ is deformation retraction, we have $[i\circ g_1]=[i\circ g_2].$ Let $G\colon K\times[0,1]\rightarrow M_f$ be a homotopy such that $G(x,0)=i\circ g_0$ and that $G(x,1)=i\circ g_1.$ Using the lemma above (take $(X,A)=(K\times[0,1],K\times\{0,1\})$ and $(Y,B)=(M_f,X)$) gives a homotopy $G'\colon K\times[0,1]\rightarrow X$ such that $G'(x,0)=g_0$ and $G'(x,1)=g_1.$ This proves the injectivity.
+
+\paragraph{Exercise 10.3}
+\subparagraph{(i)}We only need to prove that $H^m(K(A,n),B)=0.$ By the universal coefficient theorem we have
+\[H^m(K(A,n),B)\cong\text{Ext}\,(H_{m-1}(K(A,n),\mathbb{Z}),B)\oplus\hom(H_m(K(A,n),\mathbb{Z}),B).\]
+The Hurewicz theorem tells that $\tilde{H}_{m}(K(A,n),\mathbb{Z})=0$ for $0\leq m\leq n-1.$ Combining this and the fact that $\text{Ext}\,(\mathbb{Z},B)=0$ gives the result.
+
+\subparagraph{(ii)}
+
+\subparagraph{(iii)}
+
+\end{document} 

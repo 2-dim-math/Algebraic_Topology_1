@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[all]{xy}
+\geometry{a4paper,scale=0.75}
+\newcommand\cat{\mathcal{C}\mathrm{at}}
+\newcommand\C{\mathcal{C}}
+
+\title{Solution for Algebraic Topology Exercise sheet 2}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\paragraph{3.3}
+\subparagraph{(a)}Consider the following composition of functors (which we also denote by $NI$)
+\[NI\colon\Delta^{\text{op}}\xrightarrow{\mathcal{C}}\cat^{\text{op}}\xrightarrow{\text{Hom}_{\cat}(-,I)}(\text{Sets}).\]
+We first explain the notations involved. Here $\cat$ is the category of all small categories. For every object $[n]$ of $\Delta,$ the functor $\mathcal{C}$ sends $[n]$ to a category $\mathcal{C}_{[n]}:=\mathcal{C}([n])$ defined as
+\begin{itemize}
+  \item The set of objects is Ob($\mathcal{C}_{[n]}) =[n]=\{0,1,\ldots,n\}$;
+  \item $\text{Hom}_{\mathcal{C}_{[n]}}(x,y)=\begin{cases}
+                                                \{*\}, & \mbox{if } x\leq y \\
+                                                \emptyset, & \mbox{otherwise}.
+                                              \end{cases}$
+  In other words, for $x,y\in[n],$ there is at most one morphism from $x$ to $y$ and the morphism exists if and only if $x\leq y.$
+\end{itemize}
+Every morphism $\alpha\colon[n]\rightarrow[m]$ is sent by $\mathcal{C}$ to a functor $\mathcal{C}_{\alpha}$ from $\mathcal{C}_{[m]}$ to $\C_{[n]}$ defined as
+\begin{itemize}
+  \item For every $x\in[n],\C_{\alpha}(x)=\alpha(x)$
+  \item A morphism $x\rightarrow y$ in $\C_{[n]}$ is sent to the unique morphism $\alpha(x)\rightarrow\alpha(y),$ which exists since $\alpha$ is weakly monotone.
+\end{itemize}
+The second functor $\text{Hom}_{\cat}(-,I)$ sends a small category $\mathcal{D}$ to the set of all functors from $\mathcal{D}$ to $I,$ which is indeed a set since $I$ is small. Its action on morphisms between small categories is natural.
+
+Next we verify that this $NI$ coincides with the $NI$ defined in the problem for simplices by showing that giving a functor in $\text{Hom}_{\cat}(\C_{[n]},I)$ is equivalent to giving a composable $n$-tuple of morphisms in $I.$ Note that every morphism in $\C_{[n]}$ can be written as composition of morphisms of the form $(j-1)\rightarrow j$ with $j\in\{1,\ldots,n\}.$ Thus giving images of all morphisms of $\C_{[n]}$ is equivalent to only giving images of morphisms of form $(j-1)\rightarrow j.$ Now If we have a functor $F$ from $\C_{[n]}$ to $I,$ then we have for every $x\in[n]$ an object $F(x)$ of $I$ and for every morphism $(j-1)\rightarrow j$ in $\C_{[n]}$ a morphism $F_j\colon F(j-1)\rightarrow F(j)$ in $I.$ Note that by definition the target of $F_{j-1}$ equals the source of $F_j,$ so $(F_n,\ldots,F_1)$ is a composable $n$-tuple of morphisms in $I.$ Conversely, given a composable $n$-tuple of morphisms in $I,$ say $(F_n,\ldots,F_1)$ as described in the problem, we may define $F\colon\C_{[n]}\rightarrow I$ by
+\begin{itemize}
+  \item $F(j):=\begin{cases}
+                \text{source}\,(F_{j+1}), & \mbox{if } 0\leq j<n \\
+                \text{target}\,(F_n), & \mbox{if } j=n.
+              \end{cases}$
+  \item $F((j-1)\rightarrow j):=F_j.$
+\end{itemize}
+The functor is well-defined by composability of $(F_n,\ldots,F_1)$ and it clearly preserves identity and composition of morphisms. This finishes this verification. Moreove r, the above argument shows that a functor in $\text{Hom}_{\cat}(\C_{[n]},I)$ is determined by the image of all morphisms $(j-1)\rightarrow j$ under it.
+
+Finally we verify that the action of $d_i\colon[n-1]\rightarrow[n]$ on $(NI)_n$ is as required. The case for $s_i$ will be similar and thus omitted. First, $d_i$ induces a functor $\mathcal{C}_{d_i}\colon\mathcal{C}_{[n-1]}\rightarrow\mathcal{C}_{[n]},$ whose action on objects and morphisms are explained in the first paragraph. This $\mathcal{C}_{d_i}$ induces morphism of sets
+\begin{align*}
+  \text{Hom}_{\cat}(\mathcal{C}_{[n]},I) & \rightarrow\text{Hom}_{\cat}(\mathcal{C}_{[n-1]},I) \\
+  \left(\begin{gathered}\text{images of }(j-1\rightarrow j)\\
+  1\leq j\leq n\end{gathered}\right) &\mapsto \left(\begin{gathered}\text{images of }d_i(j-1)\rightarrow d_i(j)\\
+  1\leq j\leq n-1\end{gathered}\right).
+\end{align*}
+Therefore, when $j<i,$ the image of $f_j$ is still $f_j.$ When $j=i,$ the image of $f_j$ is $f_{j+1}\circ f_j$ since $d_i(i-1)\rightarrow d_i(i)$ is composition of $(i-1)\rightarrow i$ and $i\rightarrow(i+1).$ When $j>i,$ the image of $f_j$ is $f_{j+1},$ as the morphism $d_i(j-1)\rightarrow d_i(j))$ becomes $j\rightarrow j+1.$ This finishes the verification and hence the proof.
+
+\subparagraph{(b)}For every $[n]\in\Delta,$ the definition of $(NF)_n$ is already given in the problem. So we only need to verify that for every morphism $\alpha\colon[n]\rightarrow[m],$ the diagram
+\[\xymatrix{
+(NI)_m\ar[r]^{(NF)_m}\ar[d]^{\alpha^*} & (NJ)_m\ar[d]^{\alpha^*}\\
+(NI)_n\ar[r]^{(NF)_n} & (NJ)_n
+}\]
+commutes. For this, let $(f_m,\ldots,f_1)\in(NI)_m.$ By the equivalence
+\begin{equation}\label{equivalence}
+\{\text{elements in }(NI)_m\}\leftrightarrow\{\text{functors in }\text{Hom}_{\cat}(\C_{[m]},I)\leftrightarrow\left\{\begin{gathered}
+\text{image of morphisms }(j-1)\rightarrow j\\
+ \text{ under a functor in }\text{Hom}_{\cat}(\C_{[m]},I)\end{gathered}\right\}\end{equation}
+established in part (a), we may write $f_j=G((j-1)\rightarrow j)$ for all $j\in[m]$ and some functor $G\in\text{Hom}_{\cat}(\C_{[m]},I).$ Then by definition of maps in the diagram the image of $f_j$ under  $\alpha^*\circ(NF)_m$ and $(NF)_n\circ\alpha^*$ are both $F\circ G(\alpha(j-1)\rightarrow\alpha(j)).$
+
+\subparagraph{(c)}The inverse morphism $\psi\colon NI\times NJ \rightarrow N(I\times J)$ can be constructed as
+\begin{align*}
+  (NI\times NJ)_n=(NI)_n\times(NJ)_n & \xrightarrow{\psi_n} N(I\times J)_n \\
+  (f_n,\ldots,f_1)\times(g_n,\ldots,g_1) & \mapsto (f_n\times g_n,\ldots,f_1\times g_1)
+\end{align*}
+By writing elements of $(NI)_n$ as images of morphisms in $\mathcal{C}_{[n]}$ under some functor from $\mathcal{C}_{[n]}$ to $I$, as we did in the previous parts, we can show that for every $\alpha\in\text{Mor}_{\Delta}([n],[m])$ the diagram
+\[\xymatrix{(NI)_m\times(NJ)_m\ar[r]^(.55){\psi_m}\ar[d]_{\alpha^*} & N(I\times J)_m\ar[d]^{\alpha^*} \\
+(NI)_n\times(NJ)_n\ar[r]^(.55){\psi_n} & N(I\times J)_n}\]
+commutes. Thus $\psi$ is indeed a morphism between simplicial sets. By computing directly the action on elements, we can show that both the compositions
+\begin{gather*}
+  (NI\times NJ)_n=(NI)_n\times(NJ)_n \xrightarrow{\psi_n} N(I\times J)_n\xrightarrow{(N_{{\text{proj}}_I},N_{{\text{proj}}_J})_n}(NI)_n\times(NJ)_n=(NI\times NJ)_n \\
+  \text{and }N(I\times J)_n\xrightarrow{(N_{{\text{proj}}_I},N_{{\text{proj}}_J})_n}(NI)_n\times(NJ)_n=(NI\times NJ)_n\xrightarrow{\psi_n} N(I\times J)_n
+\end{gather*}
+are identities. So $(N_{{\text{proj}}_I},N_{{\text{proj}}_J})$ is an isomorphism between simplicial sets.
+
+\subparagraph{(d)}We claim that there is an isomorphism $\varphi\colon\Delta[1]\rightarrow N[1]$ between simplicial sets, which will be constructed later. If this holds, we have the following diagram (identify $NI$ with $NI\times\Delta[0]$)
+\[\xymatrix{NI\ar[r]^(.4){1\times d^1}\ar@/_1.5pc/[dddr]_{NF} & NI\times\Delta[1]\ar[d]^{\cong} & NI\ar[l]_(.35){1\times d^0}\ar@/^1.5pc/[dddl]^{NG} \\
+ & NI\times N[1]\ar[d]^{\cong} & \\
+ & N(I\times[1])\ar[d]^{NH} & \\
+ & NJ & }\]
+where $NH$ is the morphism constructed from $H$ as in part (b). The commutativity of this diagram can be showed by routine verifications on simplices, using the definition of each maps and the equivalence \eqref{equivalence}. And the existence of such a commutative diagram is just the definition of a simplicial homotopy between $NF$ and $NG.$
+ 
+Now we show our claim by briefly explaining the construction of the isomorphism $\varphi\colon\Delta[1]\rightarrow N[1].$ For every $n\in\mathbb{N},$ define
+\begin{align*}
+  \varphi_n\colon(\Delta[1])_n & \rightarrow (N[1])_n \\
+  (g\colon[n]\rightarrow[1]) & \mapsto(g_n,\ldots,g_1),\text{ with }
+  g_j=\begin{cases}
+        \text{Id}_0, & \mbox{if } g(j)=g(j-1)=0 \\
+        f\colon0\rightarrow1, & \mbox{if } g(j)=1, g(j-1)=0 \\
+        \text{Id}_1, & \mbox{if }g(j)=g(j-1)=1.
+      \end{cases}
+\end{align*}
+For every $\alpha\colon[n]\rightarrow[m],$ The diagram
+\[\xymatrix{(\Delta[1])_m\ar[d]^{\varphi_m}\ar[r]^{\alpha^*} &(\Delta[1])_n\ar[d]^{\varphi_n}\\
+(N[1])_m\ar[r]^{\alpha^*} & (N[1])_n}\]
+commutes because if we choose some $(g\colon[m]\rightarrow[1])\in(\Delta[1])_m,$ then by computing with the definition of maps and the equivalence \eqref{equivalence}, we find that 
+\begin{gather*}
+  \alpha^*\circ\varphi_m(g)=\varphi_n\circ\alpha^*(g)=(g_n,\ldots,g_1) \\
+  \text{with }g_j=\begin{cases}
+        \text{Id}_0, & \mbox{if } g\circ\alpha(j)=g\circ\alpha(j-1)=0 \\
+        f\colon0\rightarrow1, & \mbox{if } g\circ\alpha(j)=1, g\circ\alpha(j-1)=0 \\
+        \text{Id}_1, & \mbox{if }g\circ\alpha(j)=g\circ\alpha(j-1)=1.
+                         \end{cases}    
+\end{gather*}
+So $\varphi$ is a morphism. Now we describe its inverse $\psi\colon N[1]\rightarrow\Delta[1]$. Given some composable $n$-tuple $(g_n,\ldots,g_1)\in(N[1])_n,$ there are three possibilities (by composability)
+\begin{itemize}
+  \item $g_n=\cdots=g_1=\text{Id}_0$
+  \item There is one $j$ such that $g_n=\cdots=g_{j+1}=\text{Id}_1,\,g_j=f$ and $g_{j-1}=\cdots=g_1=\text{Id}_0$
+  \item $g_n=\cdots=g_1=\text{Id}_1$
+\end{itemize}
+In the first case, we let $\psi_n(g_n,\ldots,g_1)$ sends $[n]$ to $0.$ In the second case, $\psi_n(g_n,\ldots,g_1)$ send $1,\ldots,j-1$ to 0 and $j,\ldots,n$ to 1. In the third case, $\psi_n(g_n,\ldots,g_1)$ sends $[n]$ to 1. It is then straightforward to verify that $\psi$ is indeed a morphism and that both $(\psi\circ\varphi)_n$ and $(\varphi\circ\psi)_n$ are identities for all $n\in\mathbb{N}.$
+
+\subparagraph{(e)}Let $F\colon I\rightarrow J$ and $G\colon J\rightarrow I$ be functors such that there exist natural transformations $\tau\colon GF\rightarrow\text{Id}_I$ and $\tau'\colon FG\rightarrow\text{Id}_J.$ The process in part (d) shows that $\tau$ yields a simplicial homotopy between $N(GF)=NG\circ NF$ and $N(\text{Id}_I)=\text{Id}_{NI}.$ Similarly, $\tau'$ yields a simplicial homotopy between $N(FG)=NF\circ NG$ and $N(\text{Id}_J)=\text{Id}_{NJ}.$ Thus $NI$ and $NJ$ are homotopy equivalent simplicial sets.
+\end{document} 

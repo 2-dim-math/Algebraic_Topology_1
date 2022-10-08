@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[all]{xy}
+\newtheorem*{lem}{Lemma}
+
+\title{Solution for Exercise sheet 8}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+\paragraph{Exercise 8.1}
+
+\paragraph{Exercise 8.2}
+\subparagraph{(a)}Denote by $\text{tel}_nX_n$ the mapping telescope of the sequence $\{f_m\}.$ Then Exercise 2.3(b) shows that we have for every $m$ an isomorphism
+\[\pi_m(\text{tel}_nX_n,i_0(x_0))\cong \text{colim}_k\pi_m(X_k,x_k),\]
+where $x_k\in X_k$ are base points and $i_0\colon X_0\hookrightarrow\text{tel}_nX_n$ is inclusion. By definition of Eilenberg-Maclane spaces the right hand side is 0 when $m\neq n$ and $G_{\infty}$ when $m=n.$ So $\text{tel}_nX_n$ is an Eilenberg-Maclane space of type $K(G_{\infty},n).$ 
+
+\subparagraph{(b)}The first part follows directly from (a) and the only nontrivial homotopy group of the telescope is its fundamental group, which is the colimit of the following diagram.
+\[G_0\xrightarrow{\times n}G_1\xrightarrow{\times n}\cdots\xrightarrow{\times n}G_m\xrightarrow{\times n}\cdots\]
+where all groups $G_i=\mathbb{Z}.$ 
+
+We claim that the colimit is $\mathbb{Z}[n^{-1}]$ with morphisms $G_i\rightarrow\mathbb{Z}[n^{-1}]$ given by $x\mapsto x/n^i.$ We verify this by checking the universal property of colimits. Suppose that we have another abelian group $A$ and morphisms $\beta_i\colon G_i\rightarrow A,\,i\geq1,$ such that for every $i<j$ we have 
+\begin{equation}\label{1}
+\beta_i(x)=\beta_j(n^{j-i}x)
+\end{equation}
+for all $x\in\mathbb{Z}.$ Then there is a unique group homomorphism $\gamma\colon\mathbb{Z}[n^{-1}]\rightarrow A$ such that $\beta_i(x)=\gamma(x/n^{i})$ for all $i.$ The value of the map is uniquely determined by this condition, so uniqueness is clear. This $\gamma$ is well-defined because of \eqref{1}. It is a group homomorphism because every $\beta_i$ is. This shows that the required colimit, hence the required fundamental group is $\mathbb{Z}[n^{-1}].$
+\end{document} 

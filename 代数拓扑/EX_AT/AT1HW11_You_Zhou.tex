@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[all]{xy}
+\newtheorem*{lem}{Lemma}
+
+\title{Solution for Exercise sheet 11}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+\paragraph{Exercise 11.1}
+\subparagraph{(i)}We make two claims: Let $i\leq m$ and $j\leq n,$ $\alpha\colon[k]\rightarrow[i]$ and $\beta\colon[k]\rightarrow[j]$ be two surjective weakly monotone maps. Then
+\begin{enumerate}
+  \item If $k>m+n,$ then $\alpha$ and $\beta$ can always both factor through one weakly monotone surjection $\gamma\colon[k]\rightarrow[m+n].$
+  \item If $k=m+n,$ then there exist $i,j$ and $\alpha,\beta$ as above such that for every $p<m+n$ and every $\gamma\colon[k]\rightarrow[p],$ it is impossible that $\alpha$ and $\beta$ both factor through $\gamma.$
+\end{enumerate}
+
+We show that it suffices to prove these two claims. Suppose that our claims hold and $X$ and $Y$ be $m$ and $n$-dimensional simplicial sets, respectively. On one hand, for every $k>m+n$ and $(x,y)\in X_k\times Y_k,$ we can write $x=\alpha^*(x')$ and $y=\beta^*(y'),$ where $\alpha\colon[k]\rightarrow[i]$ and $\beta\colon[k]\rightarrow[j]$ are weakly monotone surjections with $i\leq m$ and $j\leq n.$ By the first claim, we can write $\alpha=\alpha'\circ\gamma$ and $\beta=\beta'\circ\gamma$ with $\gamma\colon[k]\rightarrow[m+n]$ weakly monotone and surjective. Then $(x,y)=\gamma^*(\alpha'^*(x'),\beta'^*(y'))$ is degenerate. On the other hand, let $\alpha$ and $\beta$ be as in the second claim. Consider $(\alpha^*(x),\beta^*(y))\in X_{m+n}\times Y_{m+n}$ with $x=X_m$ and $y\in Y_n$ both non-degenerate. If $(x,y)=(\gamma^*(x'),\gamma^*(y')),$ then by the uniqueness of minimal representative of a simplex proven in the lecture, we must have factorizations $\alpha=\alpha'\circ\gamma$ and $\beta=\beta'\circ\gamma,$ which is impossible by our second claim.
+
+Now we prove the claims, which are purely combinatoric problems. Consider the following model: Put $k+1$ balls in one row. There are $k$ spaces between adjacent balls. Giving a weakly monotone surjection $\alpha\colon[k]\rightarrow[i]$ is equivalent to putting $i$ bars in the spaces to separate the balls into $i+1$ groups. Surjection means that we cannot put several bars in one space. (Then numbers in $[k]$ corresponding to balls in the $l$-th group are mapped by $\alpha$ to $l.$) For the first claim, to say that $\alpha\colon[k]\rightarrow[i]$ and $\beta\colon[k]\rightarrow[j]$ both factor through one weakly monotone surjection $\gamma\colon[k]\rightarrow[m+n]$ is equivalent to say that after putting $i+j$ bars in the spaces, we can still add some bars (this ``some'' can be 0) in some spaces to separate the $k$ balls into $m+n+1$ groups. Since $k>m+n$ and $i+j\leq m+n,$ this is always achievable. This proves the first claim.
+
+For the second claim, let $i=m$ and $j=n,$ $\alpha\colon[m+n]\rightarrow[m]$ be the unique surjection such that $\alpha(m)=m$ and $\beta\colon[m+n]\rightarrow[n]$ be the unique surjection such that $\beta(m)=0$. In our model, given such $\alpha$ and $\beta$ is equivalent to having exactly one bar in each of the $m+n$ spaces between $m+n+1$ balls. It is then impossible to add any bar to separate the balls into $p$ groups for $p<m+n.$ So this proves the second claim.
+
+\subparagraph{(ii)}When $n=0$ we can show by hand that the only non-degenerate element of $\Delta^0_1\times\Delta^1_1$ is $(\text{id}_{[0]},\text{id}_{[1]}).$ So then assume $n\geq1.$ For $m\leq n+1,$ giving a non-degenerate pair $(f,g)\in\Delta^n_m\times\Delta^1_m$ is equivalent to using $n$ red bars and 1 blue bar to fill in the $m$ spaces between $m+1$ adjacent balls such that in each space there is at least one bar. This means that a non-degenerate $m$-simplex of $\Delta^n\times\Delta^1$ is a pair $(f,g)\colon[m]\rightarrow[n]\times[1]$ such that for every $k\in\{0,\,1\ldots,\,m\}$ exactly one of the following three conditions hold (for simplicity assume that $f(-1)=g(-1)=-1$ and $f(n+1)=g(2)=n+1$)
+\begin{enumerate}
+  \item $f(k-1)<f(k)<f(k+1)$ (i.e. the $k$-th ball is between 2 red bars)
+  \item $f(k)<f(k+1)$ and $g(k-1)<g(k)$ (i.e. the $k$-th ball is on the left of a red bar and right of the blue bar)
+  \item $f(k-1)<f(k)$ and $g(k)<g(k+1)$ (i.e. the $k$-th ball is on the right of a red bar and left of the blue bar)
+\end{enumerate}
+
+In particular, when $m=n+1,$ the place of the blue bar uniquely determines the places for the red bars and there are $n+1$ available places for the blue bar, so there are $n+1$ non-degenerate $(n+1)$-simplicies. 
+\end{document}

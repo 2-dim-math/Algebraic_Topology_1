@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[all]{xy}
+\newtheorem*{lem}{Lemma}
+
+\title{Solution for Exercise sheet 9}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+\paragraph{Exercise 9.1}
+Following the hint, we can attach $k$-cells ($k\geq n+2$) to $X$ to get a relative CW-complex ($Y,X$) such that $\pi_i(Y,x)\cong\pi_i(X,x)$ for $1\leq i\leq n$ and $\pi_i(Y,x)=0$ for $i\geq n+1.$ By checking definitions we get the following commutative diagram (The coefficient $\mathbb{Z}$ in homology groups will be omitted for short.)
+\[\xymatrix{
+\cdots\ar[r] & \pi_{n+2}(Y,X,x)\ar[r]\ar[d]^{h_1} & \pi_{n+1}(X,x)\ar[r]\ar[d]^{h_2} & \pi_{n+1}(Y,x)\ar[r]\ar[d]^{h_3} & \pi_{n+1}(Y,X,x)\ar[r]\ar[d]^{h_4} & \cdots\\
+\cdots\ar[r] & H_{n+2}(Y,X)\ar[r] & H_{n+1}(X)\ar[r] & H_{n+1}(Y)\ar[r] & H_{n+1}(Y,X)\ar[r] & \cdots}\]
+where the vertical maps are all Hurewicz maps. By our construction and celluar approximation theorem we get $\pi_i(Y,X,x)=0$ for $1\leq i\leq n+1,$ so $h_4$ is injective. Exercise 8.3 shows that $H_{n+1}(Y,X)=0,$ so $h_3$ is surjective. Since $n\geq2$ we can use the relative Hurewicz theorem to conclude that $h_1$ is surjective. So by the five lemma $h_2$ is surjective.
+
+\paragraph{Exercise 9.2}
+\subparagraph{(a)}
+\begin{description}
+  \item[Well-definedness] Two polynomials $f,g\in\mathbb{C}[x]$ represent a same element in $\mathbb{C}P^{\infty}$ if and only if $f=\lambda g$ for some $\lambda\in\mathbb{C}.$ So for $\lambda_1,\lambda_2\in\mathbb{C}$ we have
+      \[\mu(\mathbb{C}\lambda_1f,\mathbb{C}\lambda_2g)=\mathbb{C}(\lambda_1\lambda_2fg)=\mathbb{C}(fg)=\mu(\mathbb{C}f,\mathbb{C}g).\]
+  \item[Continuity] If we set $\mathbb{C}_0^{\infty}:=\{(x_i)_{i\in\mathbb{Z}_{>0}}\mid x_i\in\mathbb{C} \text{ for all }i\text{ and only finitely many terms are nonzero}\}$ and give it the usual metric topology, then we have the commutative diagram
+      \[\xymatrix{
+      \mathbb{C}_0^{\infty}\times\mathbb{C}_0^{\infty}\ar[r]\ar[d] & \mathbb{C}_0^{\infty}\ar[d]\\
+      \mathbb{C}P^{\infty}\times\mathbb{C}P^{\infty}\ar[r]^(.6){\mu} & \mathbb{C}P^{\infty}
+      }.\]
+      The upper map is continuous because every component of it is a polynomial of finitely many variables. The two vertical maps are quotient maps, hence continuous. So $\mu,$ as their composition, is also continuous.
+  \item[Associativity, Commutative and Unital] All obvious by the corresponding properties of $\mathbb{C}[x].$
+\end{description}
+
+\subparagraph{(b)}
+We need to show that the diagram on the left below commutes. Let $\alpha,\beta\colon (I^2,\partial I^2)\rightarrow(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)$ be based maps representing elements in $\pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1).$ Choose $\varphi\colon\pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1))\xrightarrow{\sim}\mathbb{Z}.$ Then it is shown on the right below how an element is mapped in two ways.
+\[\xymatrix{
+\pi_2(\mathbb{C}P^{\infty}\times\mathbb{C}P^{\infty},(\mathbb{C}\cdot1,\mathbb{C}\cdot1))\ar[d]\ar[r]^(.6){\mu_*} & \pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)\ar[dd]^{\varphi} & [(\alpha,\beta)]\ar@{|->}[rr]\ar@{|->}[d] & &[\mu\circ(\alpha,\beta)]\ar@{|->}[dd]\\
+\pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)\times\pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)\ar[d]^{\varphi\times\varphi} & &([\alpha],[\beta])\ar@{|->}[d] & &\\
+\mathbb{Z}\times\mathbb{Z}\ar[r]^{+} &\mathbb{Z} &(\varphi([\alpha]),\varphi([\beta]))\ar@{|->}[r] &\varphi([\alpha]+[\beta])\ar@{=}[r] & \varphi([\mu\circ(\alpha,\beta)])
+}\]
+The equality $\varphi([\alpha]+[\beta])=\varphi([\mu\circ(\alpha,\beta)])$ can be seen as follows: choose a representative $\gamma\colon (I^2,\partial I^2)\rightarrow(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)$ for $[\alpha]+[\beta],$ say
+\[\gamma(x,y)=\begin{cases}
+                \alpha(2x,y), & \mbox{if } 0\leq x\leq\frac{1}{2} \\
+                \beta(2x-1,y), & \mbox{if } \frac{1}{2}<x\leq 1,
+              \end{cases}
+              \text{ for }(x,y)\in I^2.\]
+We can construct linear homotopies between each coordinate of $\gamma$ and $\mu\circ(\alpha,\beta),$ which is constant on $\partial I^2.$ Then by putting them together we can get a homotopy between $\gamma$ and $\mu\circ(\alpha,\beta).$
+
+\subparagraph{(d)}By definition $[f]+[g]=[\mu\circ(f,g)]$ is sent to
+\begin{align*}
+[(f,g)^*\mu^*(\gamma)] &=[(f,g)^*(p_1^*(\gamma)\otimes p_2^*(\gamma))]\\
+&=[(f,g)^*p_1^*(\gamma)\otimes (f,g)^*p_2^*(\gamma)]\\
+&=[f^*(\gamma)\otimes g^*(\gamma)].
+\end{align*}
+
+\subparagraph{(e)}The well-definedness and continuity of $i$ can be proved in a similar way as in (a). For every $[f]\in\pi_2(\mathbb{C}P^{\infty},\mathbb{C}\cdot1)$ we have
+\[[f]+i_*([f])=[\mu(f,\bar{f})]=[\mathbb{C}\cdot1].\]
+so $i$ induces the additive inverse. To construct an isomorphism we denote by $E_\gamma$ the total space of $\gamma$ and consider the following diagram which commutes without the dashed arrow.
+\[\xymatrix{
+Z\ar@/^/[drr]^{z\mapsto(\mathbb{C}\cdot f(z),f(z))}\ar@/_/[ddr]_{z\mapsto g(z)}\ar@{-->}[dr] & &\\
+& \bar{\gamma}\ar[r]\ar[d] & E_\gamma\ar[d]^{\gamma}\\
+& \mathbb{C}P^{\infty}\ar[r]^i & \mathbb{C}P^{\infty}}\]
+We want to show that there is a unique $\varphi\colon Z\rightarrow\bar{\gamma}$ such that the whole diagram commutes. This is clear because the commutativity forces $\varphi$ to map any $z\in Z$ to the pair $(\mathbb{C}f(z),\overline{g(z)})\in\mathbb{C}P^{\infty}\times\mathbb{C}[x],$ which is well-defined by the commutativity from our assumption. So $\bar{\gamma}$ is the fiber product $E_\gamma\times_{\mathbb{C}P^{\infty}}\mathbb{C}P^{\infty}$ and hence there is an isomorphism $i^*(\gamma)\cong\bar{\gamma}.$
+\end{document} 

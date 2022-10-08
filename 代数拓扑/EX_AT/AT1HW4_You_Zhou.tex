@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\geometry{a4paper,scale=0.75}
+
+\title{Solution for Exercise sheet 4}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+\paragraph{Exercise 4.1}
+\subparagraph{(a)}We can consider $G$ as a small category in this way: the set of object of the category $G$ is $\{*\},$ consisting of a single point, and the set of morphisms is just the underlying set of $G,$ i.e. elements of the group $G$ are in one-to-one correspondence with endomorphisms of $*$ in the category $G.$ The unit 1 of the group $G$ corresponds to the identity in $\text{End}_{G}(*).$ Any two morphisms in $G$ are composable and the composition of two morphisms is just the product of the two elements in $G.$ In this way $BG=NG$ and the result follows directly from Exercise 3.3(a).
+
+\subparagraph{(b)}We show that $(g,(0,1))$ and $(1,1)$ represent the same point in $|BG|.$ Let $\alpha\colon[0]\rightarrow[1]$ be a map sending 0 to 1. Then in $\nabla^1,$ we have
+\[(0,1)=e_1=e_{\alpha(0)}=\alpha_*(1),\]
+where the 1 in the last term is the point in $\nabla^0.$ This implies that in $|BG|$ we have
+\[(g,(0,1))=(g,\alpha_*(1))=(\alpha^*(g),1)=(1,1).\]
+The last equation follows because $\alpha^*(g)\in |BG|_0=\{1\}.$ This proves our claim at the beginning. By letting $\alpha$ map 0 to 0, the argument also shows that $(g,(1,0))$ and $(1,1)$ represent the same point.
+
+\subparagraph{(c)}It suffices to verify that for two fixed $g,h\in G$ we have $\omega(g)\cdot\omega(h)=\omega(gh).$ Their formulas are given as follows
+\[\begin{aligned}
+\omega(g)\cdot\omega(h)\colon[0,1]&\rightarrow|BG|\\
+t&\mapsto\begin{cases}
+           (g,(2t,1-2t)), & \mbox{if } t\leq\frac{1}{2} \\
+           (h,(2t-1,2-2t)), & \mbox{otherwise}.
+         \end{cases}\end{aligned}\quad\qquad
+\begin{aligned}
+\omega(gh)\colon[0,1]&\rightarrow|BG|\\
+t&\mapsto(gh, (t,1-t)).\end{aligned}\]
+Following the hint, we consider the composition $H$ of maps
+\begin{align*}
+  H(s,t)\colon [0,1]\times[0,1]&\rightarrow(BG)_2\times\nabla^2\rightarrow|BG| \\
+  (s,t) & \mapsto\begin{cases}
+               ((g,h),(st,(2-2s)t,1-(2-s)t)), & \mbox{if } t\leq\frac{1}{2} \\
+               ((g,h),(st+(1-s)(2t-1),(1-s)(2-2t),s(1-t))), & \mbox{otherwise}.
+             \end{cases}
+\end{align*}
+From this formula it is clear that $H$ is continuous. Moreover, $H$ satisfies
+\begin{gather*}
+  H(0,t)=\begin{cases}
+           ((g,h),d_{0*}(2t,1-2t)), & \mbox{if } t\leq\frac{1}{2} \\
+           ((g,h),d_{2*}(2t-1,2-2t), & \mbox{otherwise}.
+         \end{cases}=\begin{cases}
+                       (g,(2t,1-2t)), & \mbox{if } t\leq\frac{1}{2} \\
+                       (h,(2t-1,2-2t)), & \mbox{otherwise}.
+                     \end{cases}, \\
+  H(1,t)=((g,h),d_{1*}(t,1-t))=(gh,(t,1-t))\text{ and} \\
+  H(s,0)=((g,h),(0,0,1))=(1,1)=((g,h),(1,0,0))=H(s,1).
+\end{gather*}
+(The (1,1) in the third equation is the basepoint of $|BG|$.) These together show that $H$ is a homotopy between $\omega(g)\cdot\omega(h)$ and $\omega(gh)$ and this finishes the proof.
+
+\end{document}

@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[all]{xy}
+\newtheorem*{lem}{Lemma}
+
+\title{Solution for Exercise sheet 5}
+\author{Yikai Teng, You Zhou}
+\date{Exercise session: Thu. 8-10}
+
+\begin{document}
+\maketitle
+
+\paragraph{Exercise 5.1}
+We show that these are fibre bundles by using Exercise 5.2(b). We first consider the real case. Note that $O(k)$ acts on both $V_n(\mathbb{R}^k)$ and $Gr_n(\mathbb{R}^k)$ transitively with an isotropy group $O(k-n)$ and $O(n)\times O(k-n),$ respectively. So $V_n(\mathbb{R}^k)\cong O(k)/O(k-n)$ and $Gr_n(\mathbb{R}^k)\cong O(k)/O(n)\times O(k-n).$ From this we see that $q$ and $p$ are just the projections expressed in Exercise 5.2(b). Moreover, if $U$ is a neighborhood of $I\cdot O(k-n)$ in $V_n(\mathbb{R}^k),$ then we can form a continuous section $U\cdot O(k-n)\rightarrow O(k)$ by the Gram-Schmidt method. If $V$ is a neighborhood of $I\cdot O(n)\times O(k-n),$ then we can form a continuous section $V\rightarrow O(k)$ by just putting two matrices on the diagonal. Then the conclusion of Exercise 5.2(b) shows that $q$ and $p$ are fibre bundles and that their fibres are $O(n)$ and $V_{n-m}(\mathbb{R}^{k-m}),$ respectively. It can be proved similarly that in the complex cases $q$ and $p$ are still fibre bundles but their fibres are $U(n)$ and $V_{n-m}(\mathbb{C}^{k-m}),$ respectively.
+
+Next we consider the long exact homotopy group sequences. Noting that $V_1(\mathbb{R}^{n})=S^{n-1}$ and that $V_1(\mathbb{C}^{n})=S^{2n-1},$ we have the following two exact sequences (corresponding to $m=1$ in the definition of $p$)
+\begin{gather}
+\cdots\rightarrow \pi_i(S^{k-n})\rightarrow \pi_i(V_n(\mathbb{R}^k))\rightarrow \pi_i(V_{n-1}(\mathbb{R}^k))\rightarrow \pi_{i-1}(S^{k-n})\rightarrow\cdots \label{les1}\\
+\cdots\rightarrow \pi_i(S^{2k-2n+1})\rightarrow \pi_i(V_n(\mathbb{C}^k))\rightarrow \pi_i(V_{n-1}(\mathbb{C}^k))\rightarrow \pi_{i-1}(S^{2k-2n+1})\rightarrow\cdots \label{les2}
+\end{gather}
+Using induction on $n$ and these two sequences give immediately that $\pi_i(V_n(\mathbb{R}^k))=0$ when $i\leq k-n-1$ and that $\pi_i(V_n(\mathbb{C}^k))=0$ when $i\leq 2k-2n.$ So $V_n(\mathbb{R}^k)$ is $(k-n-1)$-connected and $V_n(\mathbb{C}^k)$ is $(2k-2n)$-connected.
+
+Finally we compute the homotopy groups. Taking $m=1$ in the definition of $p$ then gives us
+\begin{gather}
+\cdots\rightarrow \pi_{k-n+1}(S^{k-1})\rightarrow \pi_{k-n}(V_{n-1}(\mathbb{R}^{k-1}))\rightarrow \pi_{k-n}(V_n(\mathbb{R}^k))\rightarrow \pi_{k-n}(S^{n-1})\rightarrow\cdots \label{les3}\\
+\cdots\rightarrow \pi_{2k-2n+2}(S^{2k-1})\rightarrow \pi_{2k-2n+1}(V_{n-1}(\mathbb{C}^{k-1}))\rightarrow \pi_{2k-2n+1}(V_{n}(\mathbb{C}^k))\rightarrow \pi_{2k-2n+1}(S^{2k-1})\rightarrow\cdots \label{les4}
+\end{gather}
+So when $n>1$ we have
+\[\pi_{2k-2n+1}(V_{n}(\mathbb{C}^k))\cong\pi_{2k-2n+1}(V_{n-1}(\mathbb{C}^{k-1}))\cong\cdots\cong\pi_{2k-2n+1}(V_{1}(\mathbb{C}^{k-n+1}))=\mathbb{Z}.\]
+When $n>2$ we have
+\[\pi_{k-n}(V_{n}(\mathbb{R}^k))\cong\pi_{k-n+1}(V_{n-1}(\mathbb{R}^{k-1}))\cong\cdots\cong\pi_{k-n}(V_{2}(\mathbb{R}^{k-n+2})).\]
+Using the CW structure on $V_n(\mathbb{R}^k)$ (explained in P302 of Hatcher's \textit{Algebraic Topology}) we get
+\[H_{k-n}(V_{2}(\mathbb{R}^{k-n+2}))=
+\begin{cases}
+  \mathbb{Z}/2\mathbb{Z}, & \mbox{if } k-n\text{ odd} \\
+  \mathbb{Z}, & \mbox{if } k-n\text{ even}.
+\end{cases}\]
+This holds also for $n=2.$ Since by the definition of $p$ we have $n>1,$ by Hurewicz's theorem we get
+\[\pi_{k-n}(V_{2}(\mathbb{R}^{k-n+2}))=
+\begin{cases}
+  \mathbb{Z}/2\mathbb{Z}, & \mbox{if } k-n\text{ odd} \\
+  \mathbb{Z}, & \mbox{if } k-n\text{ even}.
+\end{cases}\]
+
+\paragraph{Exercise 5.2}
+\subparagraph{(a)}We need the following lemma.
+\begin{lem}
+If $G$ is a topological group and $g\in G,$ and $U$ is a neighborhood of $g,$ then there is a neighborhood $V$ of $e$ such that $V=V^{-1}$ and that $VgV^{-1}\subset U.$
+\end{lem}
+\begin{proof}[Proof of the Lemma]
+  Consider the following two functions
+   \begin{align*}
+     f\colon G\times G&\rightarrow G & h\colon G\times G&\rightarrow G \\
+     (v_1,v_2)&\mapsto v_1gv_2^{-1} & (v_1,v_2)&\mapsto v_2gv_1^{-1}
+   \end{align*}
+  Then $f$ and $h$ are both continuous since $G$ is a topological group. Set
+  \[W_1:=f^{-1}(U)\cap(f^{-1}(U))^{-1},\,W_2:=h^{-1}(U)\cap(h^{-1}(U))^{-1},\,W:=W_1\cap W_2.\]
+  (For a subset $Z\subset G\times G$, we define here $Z^{-1}:=\{(z_1^{-1},z_2^{-1})\mid(z_1,z_2)\in Z\}.$) Then $W$ is an open neighborhood of $(e,e)$ and $W=W^{-1}$ since both $W_1$ and $W_2$ satisfy these two conditions. Moreover, let $p_1,p_2\colon G\times G\rightarrow G$ be projection to the first and second coordinate, respectively, then by our construction $p_1(W)=p_2(W)$ and it is an open neighborhood of $e.$ In addition, $V:=p_1(W)$ satisfies that $V=V^{-1}$ and that $VgV^{1}=f(W)\subset f(f^{-1}(U))=U.$ So $V$ is our required neighborhood.
+\end{proof}
+
+Now come back to this problem. Let $xH$ and $yH$ be different points in $G/H.$ Then $y^{-1}x\notin H.$ Since $G\setminus H$ is an open neighborhood of $y^{-1}x,$ by the lemma there is an open neighborhood $U$ of $e$ such that $U=U^{-1}$ and that $Uy^{-1}xU^{-1}\cap H=\emptyset.$ This implies that $y^{-1}xU\cap UH=\emptyset.$ Thus $xUH$ and $yUH$ are neighborhoods of $xH$ and $yH,$ respectively, and they do not intersect.
+
+\subparagraph{(b)}
+Following the hint, we first show that
+\[\varphi\colon H/K\times U\rightarrow p^{-1}(U),\quad(hK,xH)\mapsto\sigma(xH)\cdot hK\]
+is a homeomorphism by finding its inverse. Suppose that $xK\subset p^{-1}(U).$ Then $p(xK)=xH\in U.$ From the following commutative diagram
+\[\xymatrix{
+G\ar[r] & G/K\ar[d]^{p}\\
+U\ar[u]^{\sigma}\ar@{^(->}[r] & G/H
+}\]
+(the top map is quotient map and the bottom is inclusion) we get that $xH=p(\sigma(xH)K)=\sigma(xH)\cdot H.$ So $(\sigma(xH))^{-1}x\in H$ and we can define
+\[\psi\colon p^{-1}(U)\rightarrow H/K\times U,\quad xK\mapsto(\sigma(xH))^{-1}xK,xH) \]
+This $\psi$ is continuous by continuity of multiplication and inverse and the continuity of $\sigma.$ It is also not hard to verify by expanding the definitions that $\psi\circ\varphi=\text{id}$ and $\varphi\circ\psi=\text{id}.$ So we have shown that $\varphi$ is a homeomorphism.
+
+Now for every $gH\in G/H,gU$ is a neighborhood of $gH$ and we can prove in a similar way that the map
+\[H/K\times gU\rightarrow p^{-1}(gU),\quad(hK,gxH)\mapsto\sigma(gxH)\cdot hK\]
+is a homeomorphism. This finishes the proof.
+\end{document} 
